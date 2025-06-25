@@ -11,29 +11,41 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace BRClock2
 {
-    public partial class Config : Form
-    {
-        private frmClock clockInstance; // Add a reference to an instance of frmClock
+	public partial class ConfigForm : Form
+	{
+		private Clock ClockInstance; // Add a reference to an instance of the Clock.
 
-        public Config(frmClock clock)
-        {
-            InitializeComponent();
-            clockInstance = clock; // Initialize the instance
-        }
+		public ConfigForm(Clock clock)
+		{
+			InitializeComponent();
+			ClockInstance = clock; // Initialize the instance
+		}
 
-        private void btnFont_Click(object sender, EventArgs e)
-        {
-            fontDialog.ShowColor = true;
-            fontDialog.Font = new Font(clockInstance.ClockFontName, clockInstance.ClockFontSize); // Use the instance
-            fontDialog.Color = clockInstance.ClockFontColor;
+		private void btnFont_Click(object sender, EventArgs e)
+		{
+			FontDialog.Font = new Font(ClockInstance.ClockFont, ClockInstance.ClockFont.Style);
+			FontDialog.ShowColor = true;
+			if (FontDialog.ShowDialog() == DialogResult.OK)
+			{
+				ClockInstance.ClockFont = FontDialog.Font;
+				SampleLabel.Font = FontDialog.Font; // Update the sample label font
+			}
+		}
 
-            if (fontDialog.ShowDialog() != DialogResult.Cancel)
-            {
-                clockInstance.ClockFontName = fontDialog.Font.Name;
-                clockInstance.ClockFontSize = fontDialog.Font.Size;
-                clockInstance.ClockFontColor = fontDialog.Color;
+		private void btnSetBackgroundColor_Click(object sender, EventArgs e)
+		{
+			colorDialog.Color = ClockInstance.ClockBackgroundColor; // Use the instance
+			if (colorDialog.ShowDialog() == DialogResult.OK)
+			{
+				ClockInstance.ClockBackgroundColor = colorDialog.Color;
+				SampleLabel.BackColor = colorDialog.Color; // Update the sample label background color
+			}
+		}
 
-            }
-        }
-    }
+		private void btnSave_Click(object sender, EventArgs e)
+		{
+			ClockInstance.ClockDateTimeFormat = txtFormat.Text;
+			this.Close();
+		}
+	}
 }

@@ -1,6 +1,6 @@
 ﻿namespace BRClock2
 {
-    partial class frmClock
+    partial class Clock
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,34 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            lblTime = new Label();
+            TimeLabel = new Label();
             SuspendLayout();
             // 
-            // lblTime
+            // TimeLabel
             // 
-            lblTime.AutoSize = true;
-            lblTime.Location = new Point(3, 0);
-            lblTime.Margin = new Padding(5);
-            lblTime.Name = "lblTime";
-            lblTime.Size = new Size(74, 15);
-            lblTime.TabIndex = 0;
-            lblTime.Text = "Hello, world.";
-            lblTime.MouseClick += lblTime_Click;
+            TimeLabel.AutoSize = true;
+            TimeLabel.Location = new Point(3, 0);
+            TimeLabel.Margin = new Padding(5, 6, 5, 6);
+            TimeLabel.Name = "lblTime";
+            TimeLabel.Size = new Size(81, 17);
+            TimeLabel.TabIndex = 0;
+            TimeLabel.Text = "Hello, world.";
+            TimeLabel.MouseClick += TimeLabel_MouseClick;
             // 
-            // frmClock
+            // Clock
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(800, 450);
-            ControlBox = false;
-            Controls.Add(lblTime);
+            ClientSize = new Size(800, 510);
+            Controls.Add(TimeLabel);
+            Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             MaximizeBox = false;
             MdiChildrenMinimizedAnchorBottom = false;
             MinimizeBox = false;
             Name = "frmClock";
             ShowInTaskbar = false;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "BRClock";
             ResumeLayout(false);
             PerformLayout();
@@ -63,6 +64,6 @@
 
         #endregion
 
-        private Label lblTime;
+        public Label TimeLabel;
     }
 }
