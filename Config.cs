@@ -13,9 +13,9 @@ namespace BRClock2
 {
     public partial class Config : Form
     {
-        private frmClock clockInstance; // Add a reference to an instance of frmClock
+        private Clock clockInstance; // Add a reference to an instance of the Clock.
 
-        public Config(frmClock clock)
+        public Config(Clock clock)
         {
             InitializeComponent();
             clockInstance = clock; // Initialize the instance
@@ -23,16 +23,20 @@ namespace BRClock2
 
         private void btnFont_Click(object sender, EventArgs e)
         {
-            fontDialog.ShowColor = true;
-            fontDialog.Font = new Font(clockInstance.ClockFontName, clockInstance.ClockFontSize); // Use the instance
-            fontDialog.Color = clockInstance.ClockFontColor;
-
-            if (fontDialog.ShowDialog() != DialogResult.Cancel)
+			fontDialog.Font = new Font(clockInstance.ClockFont, clockInstance.ClockFont.Style);
+			fontDialog.ShowColor = true;
+			if (fontDialog.ShowDialog() == DialogResult.OK)
             {
-                clockInstance.ClockFontName = fontDialog.Font.Name;
-                clockInstance.ClockFontSize = fontDialog.Font.Size;
-                clockInstance.ClockFontColor = fontDialog.Color;
+                clockInstance.ClockFont = fontDialog.Font;
+            }
+        }
 
+        private void btnSetBackgroundColor_Click(object sender, EventArgs e)
+        {
+            colorDialog.Color = clockInstance.ClockBackgroundColor; // Use the instance
+			if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                clockInstance.ClockBackgroundColor = colorDialog.Color; 
             }
         }
     }
