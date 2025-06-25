@@ -32,9 +32,16 @@ namespace BRClock2
 		{
 			if (e.Button == MouseButtons.Right)
 			{
-				ConfigForm configForm = new ConfigForm(this);
+				Config configForm = new Config(this);
 				configForm.ShowDialog();
+				TimeLabel.Font = ClockFont;
+				TimeLabel.BackColor = ClockBackgroundColor;
 			}
+		}
+
+		private void ClockForm_Load(object sender, EventArgs e)
+		{
+
 		}
 	}
 }

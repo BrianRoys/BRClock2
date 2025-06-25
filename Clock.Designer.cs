@@ -58,6 +58,7 @@
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "BRClock";
+            Load += ClockForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
