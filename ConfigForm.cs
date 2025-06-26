@@ -20,21 +20,26 @@ namespace BRClock2
 		{
 			InitializeComponent();
 			ClockInstance = clock; // Initialize the instance
-			txtFormat.Text = ClockInstance.ClockDateTimeFormat;
+			FormatTextBox.Text = ClockInstance.ClockDateTimeFormat;
 		}
 
-		private void btnFont_Click(object sender, EventArgs e)
+		private void FontButton_Click(object sender, EventArgs e)
 		{
 			FontDialog.Font = new Font(ClockInstance.ClockFont, ClockInstance.ClockFont.Style);
 			FontDialog.ShowColor = true;
+			FontDialog.Color = ClockInstance.ClockTextColor;
 			if (FontDialog.ShowDialog() == DialogResult.OK)
 			{
 				ClockInstance.ClockFont = FontDialog.Font;
-				SampleLabel.Font = FontDialog.Font; // Update the sample label font
+				ClockInstance.ClockTextColor = FontDialog.Color; // Update the text color in the clock instance
+
+				// Update the sample label
+				SampleLabel.Text = $"{FontDialog.Font.Name} {FontDialog.Font.SizeInPoints} pts"; 
+
 			}
 		}
 
-		private void btnSetBackgroundColor_Click(object sender, EventArgs e)
+		private void BackgroundColorButton_Click(object sender, EventArgs e)
 		{
 			colorDialog.Color = ClockInstance.ClockBackgroundColor; // Use the instance
 			if (colorDialog.ShowDialog() == DialogResult.OK)
@@ -44,9 +49,9 @@ namespace BRClock2
 			}
 		}
 
-		private void btnSave_Click(object sender, EventArgs e)
+		private void SaveButton_Click(object sender, EventArgs e)
 		{
-			ClockInstance.ClockDateTimeFormat = txtFormat.Text;
+			ClockInstance.ClockDateTimeFormat = FormatTextBox.Text;
 
 			// Save off the configuration.
 			//Properties.Settings.Default.ClockDateTimeFormat = ClockInstance.ClockDateTimeFormat;

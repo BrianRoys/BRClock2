@@ -8,11 +8,13 @@ namespace BRClock2
 		public Font ClockFont { get; set; }
 		public Color ClockBackgroundColor { get; set; } = Color.White;
 		public string ClockDateTimeFormat { get; set; } = "yyyy-MM-dd HH:mm:ss";
-		
+		public Color ClockTextColor { get; internal set; } = Color.Black;
+
 		private void UpdateClock(object? sender, EventArgs e)
 		{
 			TimeLabel.Font = ClockFont;
 			TimeLabel.BackColor = ClockBackgroundColor;
+			TimeLabel.ForeColor = ClockTextColor;
 			TimeLabel.Text = DateTime.Now.ToString(ClockDateTimeFormat);
 		}
 
@@ -33,7 +35,7 @@ namespace BRClock2
 			if (e.Button == MouseButtons.Right)
 			{
 				ConfigForm configForm = new ConfigForm(this);
-				configForm.ShowDialog();
+				configForm.Modal();
 			}
 		}
 	}
