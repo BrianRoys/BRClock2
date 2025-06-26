@@ -19,7 +19,7 @@ namespace BRClock2
 		public ConfigForm(ClockForm clock)
 		{
 			InitializeComponent();
-			ClockInstance = clock; // Initialize the instance
+			ClockInstance = clock;
 			FormatTextBox.Text = ClockInstance.ClockDateTimeFormat;
 		}
 
@@ -31,11 +31,8 @@ namespace BRClock2
 			if (FontDialog.ShowDialog() == DialogResult.OK)
 			{
 				ClockInstance.ClockFont = FontDialog.Font;
-				ClockInstance.ClockTextColor = FontDialog.Color; // Update the text color in the clock instance
-
-				// Update the sample label
-				SampleLabel.Text = $"{FontDialog.Font.Name} {FontDialog.Font.SizeInPoints} pts"; 
-
+				ClockInstance.ClockTextColor = FontDialog.Color; 
+				UpdateSampleText();
 			}
 		}
 
@@ -45,22 +42,27 @@ namespace BRClock2
 			if (colorDialog.ShowDialog() == DialogResult.OK)
 			{
 				ClockInstance.ClockBackgroundColor = colorDialog.Color;
-				SampleLabel.BackColor = colorDialog.Color; // Update the sample label background color
+				UpdateSampleText();
 			}
 		}
 
 		private void SaveButton_Click(object sender, EventArgs e)
 		{
-			ClockInstance.ClockDateTimeFormat = FormatTextBox.Text;
-
-			// Save off the configuration.
-			//Properties.Settings.Default.ClockDateTimeFormat = ClockInstance.ClockDateTimeFormat;
-			//Properties.Settings.Default.ClockFont = ClockInstance.ClockFont.Name;
-			//Properties.Settings.Default.ClockFontSize = ClockInstance.ClockFont.Size;
-			//Properties.Settings.Default.ClockFontStyle = (int)ClockInstance.ClockFont.Style;
-			//Properties.Settings.Default.ClockBackgroundColor = ClockInstance.ClockBackgroundColor.ToArgb();
-				
+			ClockInstance.SaveSettings();
 			this.Close();
+		}
+
+		private void FormatTextBox_TextChanged(object sender, EventArgs e)
+		{
+			ClockInstance.ClockDateTimeFormat = FormatTextBox.Text;
+			UpdateSampleText();
+		}
+		private void UpdateSampleText()
+		{
+			SampleLabel.BackColor = ClockInstance.ClockBackgroundColor;
+			SampleLabel.ForeColor = ClockInstance.ClockTextColor; // Use the instance's text color
+			SampleLabel.Font = ClockInstance.ClockFont; // Use the instance's font
+			SampleLabel.Text = $"{FontDialog.Font.Name} {FontDialog.Font.SizeInPoints} pts";
 		}
 	}
 }

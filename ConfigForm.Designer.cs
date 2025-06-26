@@ -51,7 +51,7 @@
 			// 
 			// BackgroundColorButton
 			// 
-			BackgroundColorButton.Location = new Point(12, 126);
+			BackgroundColorButton.Location = new Point(176, 12);
 			BackgroundColorButton.Name = "BackgroundColorButton";
 			BackgroundColorButton.Size = new Size(144, 23);
 			BackgroundColorButton.TabIndex = 1;
@@ -63,8 +63,9 @@
 			// 
 			FormatTextBox.Location = new Point(100, 87);
 			FormatTextBox.Name = "FormatTextBox";
-			FormatTextBox.Size = new Size(188, 23);
+			FormatTextBox.Size = new Size(220, 23);
 			FormatTextBox.TabIndex = 3;
+			FormatTextBox.TextChanged += FormatTextBox_TextChanged;
 			// 
 			// label1
 			// 
@@ -77,7 +78,7 @@
 			// 
 			// btnSave
 			// 
-			btnSave.Location = new Point(47, 164);
+			btnSave.Location = new Point(48, 134);
 			btnSave.Name = "btnSave";
 			btnSave.Size = new Size(75, 23);
 			btnSave.TabIndex = 5;
@@ -87,7 +88,7 @@
 			// 
 			// btnCancel
 			// 
-			btnCancel.Location = new Point(176, 164);
+			btnCancel.Location = new Point(213, 134);
 			btnCancel.Name = "btnCancel";
 			btnCancel.Size = new Size(75, 23);
 			btnCancel.TabIndex = 6;
@@ -97,7 +98,7 @@
 			// SampleLabel
 			// 
 			SampleLabel.AutoSize = true;
-			SampleLabel.Location = new Point(16, 49);
+			SampleLabel.Location = new Point(16, 51);
 			SampleLabel.Name = "SampleLabel";
 			SampleLabel.Size = new Size(45, 15);
 			SampleLabel.TabIndex = 7;
@@ -109,7 +110,7 @@
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			CancelButton = btnCancel;
-			ClientSize = new Size(321, 203);
+			ClientSize = new Size(340, 180);
 			Controls.Add(SampleLabel);
 			Controls.Add(btnCancel);
 			Controls.Add(btnSave);
