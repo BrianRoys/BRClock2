@@ -59,6 +59,8 @@
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "BRClock";
 			TopMost = true;
+			FormClosing += ClockForm_FormClosing;
+			Load += ClockForm_Load;
 			ResumeLayout(false);
 			PerformLayout();
 		}

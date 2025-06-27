@@ -1,4 +1,3 @@
-using System.Text;
 using Timer = System.Windows.Forms.Timer;
 
 namespace BRClock2
@@ -10,6 +9,7 @@ namespace BRClock2
 		public Color ClockBackgroundColor { get; set; } = Color.White;
 		public string ClockDateTimeFormat { get; set; } = "yyyy-MM-dd HH:mm:ss";
 		public Color ClockTextColor { get; internal set; } = Color.Black;
+		public Point ClockLocation { get; set; } = new Point(100, 100); // Default position of the clock
 
 		private void UpdateClock(object? sender, EventArgs e)
 		{
@@ -64,6 +64,7 @@ namespace BRClock2
 				(float)Properties.Settings.Default.ClockFontSize,
 				(FontStyle)Properties.Settings.Default.ClockFontStyle
 			);
+			ClockLocation = Location = new Point(Properties.Settings.Default.ClockX, Properties.Settings.Default.ClockY);
 		}
 
 		public void SaveSettings()
@@ -80,8 +81,21 @@ namespace BRClock2
 			Properties.Settings.Default["ClockFontFamily"] = ClockFont.FontFamily.Name;
 			Properties.Settings.Default["ClockFontSize"] = ClockFont.Size;
 			Properties.Settings.Default["ClockFontStyle"] = (int)ClockFont.Style;
+			Properties.Settings.Default["Clockx"] = Location.X;
+			Properties.Settings.Default["ClockY"] = Location.Y;
 
 			Properties.Settings.Default.Save();
+		}
+
+		private void ClockForm_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			SaveSettings();
+		}
+
+		private void ClockForm_Load(object sender, EventArgs e)
+		{
+			Location = ClockLocation;
+			UpdateClock(sender, e);
+		}
 	}
-}
 }

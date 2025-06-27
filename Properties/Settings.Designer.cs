@@ -166,5 +166,29 @@ namespace BRClock2.Properties {
                 this["ClockFontStyle"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int ClockX {
+            get {
+                return ((int)(this["ClockX"]));
+            }
+            set {
+                this["ClockX"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int ClockY {
+            get {
+                return ((int)(this["ClockY"]));
+            }
+            set {
+                this["ClockY"] = value;
+            }
+        }
     }
 }
