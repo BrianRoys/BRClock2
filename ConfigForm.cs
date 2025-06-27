@@ -48,12 +48,13 @@
 			ClockInstance.ClockDateTimeFormat = FormatTextBox.Text;
 			UpdateSampleText();
 		}
+
 		private void UpdateSampleText()
 		{
 			SampleLabel.BackColor = ClockInstance.ClockBackgroundColor;
 			SampleLabel.ForeColor = ClockInstance.ClockTextColor; // Use the instance's text color
 			SampleLabel.Font = ClockInstance.ClockFont; // Use the instance's font
-			SampleLabel.Text = $"{FontDialog.Font.Name} {FontDialog.Font.SizeInPoints} pts";
+			SampleLabel.Text = $"{ClockInstance.ClockFont.Name} {ClockInstance.ClockFont.SizeInPoints} pts";
 		}
 	}
 }

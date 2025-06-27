@@ -55,7 +55,9 @@
 			MdiChildrenMinimizedAnchorBottom = false;
 			MinimizeBox = false;
 			Name = "ClockForm";
+			ShowIcon = false;
 			ShowInTaskbar = false;
+			SizeGripStyle = SizeGripStyle.Hide;
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "BRClock";
 			TopMost = true;
