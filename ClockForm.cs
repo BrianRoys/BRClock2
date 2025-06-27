@@ -4,21 +4,6 @@ namespace BRClock2
 {
 	public partial class ClockForm : Form
 	{
-		/// Configuration settings for the clock
-		public Font ClockFont { get; set; } = new Font("Arial", 12, FontStyle.Regular);
-		public Color ClockBackgroundColor { get; set; } = Color.White;
-		public string ClockDateTimeFormat { get; set; } = "yyyy-MM-dd HH:mm:ss";
-		public Color ClockTextColor { get; internal set; } = Color.Black;
-		public Point ClockLocation { get; set; } = new Point(100, 100); // Default position of the clock
-
-		private void UpdateClock(object? sender, EventArgs e)
-		{
-			TimeLabel.Font = ClockFont;
-			TimeLabel.BackColor = ClockBackgroundColor;
-			TimeLabel.ForeColor = ClockTextColor;
-			TimeLabel.Text = DateTime.Now.ToString(ClockDateTimeFormat);
-		}
-
 		public ClockForm()
 		{
 			InitializeComponent();
@@ -31,6 +16,14 @@ namespace BRClock2
 			timer.Start();
 		}
 
+		private void UpdateClock(object? sender, EventArgs e)
+		{
+			TimeLabel.Font = ClockFont;
+			TimeLabel.BackColor = ClockBackgroundColor;
+			TimeLabel.ForeColor = ClockTextColor;
+			TimeLabel.Text = DateTime.Now.ToString(ClockDateTimeFormat);
+		}
+
 		private void TimeLabel_MouseClick(object sender, MouseEventArgs e)
 		{
 			if (e.Button == MouseButtons.Right)
@@ -39,6 +32,19 @@ namespace BRClock2
 				configForm.ShowDialog();
 			}
 		}
+		
+		#region ClockConfiguration
+
+		/// <summary>
+		/// Configuration settings for the clock. 
+		/// I've thought about refactoring this section but don't see any advantage to it at the moment. 
+		/// It is simple enough to understand and maintain.
+
+		public Font ClockFont { get; set; } = new Font("Arial", 12, FontStyle.Regular);
+		public Color ClockBackgroundColor { get; set; } = Color.White;
+		public string ClockDateTimeFormat { get; set; } = "yyyy-MM-dd HH:mm:ss";
+		public Color ClockTextColor { get; internal set; } = Color.Black;
+		public Point ClockLocation { get; set; } = new Point(100, 100); // Default position of the clock
 
 		// Settings can be only primitive types or serializable objects.
 		// We have to break Fonts and Colors down in and out.
@@ -97,5 +103,8 @@ namespace BRClock2
 			Location = ClockLocation;
 			UpdateClock(sender, e);
 		}
+
+		#endregion // ClockConfiguration
+
 	}
 }

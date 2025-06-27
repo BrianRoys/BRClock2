@@ -1,17 +1,8 @@
-﻿using DocumentFormat.OpenXml.CustomProperties;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-
-namespace BRClock2
+﻿namespace BRClock2
 {
+
+	// This is JUST the Clock Configuration dialog box, not the settings themselves, 
+	// they are in the ClockForm class. This is just a dialog box to change the settings.
 	public partial class ConfigForm : Form
 	{
 		private ClockForm ClockInstance; // Add a reference to an instance of the Clock.
