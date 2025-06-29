@@ -28,15 +28,17 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			components = new System.ComponentModel.Container();
 			FontDialog = new FontDialog();
 			colorDialog = new ColorDialog();
 			FontButton = new Button();
 			BackgroundColorButton = new Button();
 			FormatTextBox = new TextBox();
-			label1 = new Label();
 			btnSave = new Button();
 			btnCancel = new Button();
 			SampleLabel = new Label();
+			DateTimeFormatHelpLinkLabel = new LinkLabel();
+			toolTip1 = new ToolTip(components);
 			SuspendLayout();
 			// 
 			// FontButton
@@ -61,24 +63,15 @@
 			// 
 			// FormatTextBox
 			// 
-			FormatTextBox.Location = new Point(100, 87);
+			FormatTextBox.Location = new Point(16, 62);
 			FormatTextBox.Name = "FormatTextBox";
 			FormatTextBox.Size = new Size(220, 23);
 			FormatTextBox.TabIndex = 3;
 			FormatTextBox.TextChanged += FormatTextBox_TextChanged;
 			// 
-			// label1
-			// 
-			label1.AutoSize = true;
-			label1.Location = new Point(16, 90);
-			label1.Name = "label1";
-			label1.Size = new Size(78, 15);
-			label1.TabIndex = 4;
-			label1.Text = "Time Format:";
-			// 
 			// btnSave
 			// 
-			btnSave.Location = new Point(48, 134);
+			btnSave.Location = new Point(48, 151);
 			btnSave.Name = "btnSave";
 			btnSave.Size = new Size(75, 23);
 			btnSave.TabIndex = 5;
@@ -88,7 +81,7 @@
 			// 
 			// btnCancel
 			// 
-			btnCancel.Location = new Point(213, 134);
+			btnCancel.Location = new Point(213, 151);
 			btnCancel.Name = "btnCancel";
 			btnCancel.Size = new Size(75, 23);
 			btnCancel.TabIndex = 6;
@@ -98,11 +91,22 @@
 			// SampleLabel
 			// 
 			SampleLabel.AutoSize = true;
-			SampleLabel.Location = new Point(16, 51);
+			SampleLabel.Location = new Point(16, 88);
 			SampleLabel.Name = "SampleLabel";
 			SampleLabel.Size = new Size(45, 15);
 			SampleLabel.TabIndex = 7;
 			SampleLabel.Text = "sample";
+			// 
+			// DateTimeFormatHelpLinkLabel
+			// 
+			DateTimeFormatHelpLinkLabel.AutoSize = true;
+			DateTimeFormatHelpLinkLabel.Location = new Point(16, 44);
+			DateTimeFormatHelpLinkLabel.Name = "DateTimeFormatHelpLinkLabel";
+			DateTimeFormatHelpLinkLabel.Size = new Size(107, 15);
+			DateTimeFormatHelpLinkLabel.TabIndex = 8;
+			DateTimeFormatHelpLinkLabel.TabStop = true;
+			DateTimeFormatHelpLinkLabel.Text = "Date-Time Format:";
+			DateTimeFormatHelpLinkLabel.LinkClicked += DateTimeFormatHelpLinkLabel_LinkClicked;
 			// 
 			// ConfigForm
 			// 
@@ -110,11 +114,11 @@
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			CancelButton = btnCancel;
-			ClientSize = new Size(340, 180);
+			ClientSize = new Size(340, 193);
+			Controls.Add(DateTimeFormatHelpLinkLabel);
 			Controls.Add(SampleLabel);
 			Controls.Add(btnCancel);
 			Controls.Add(btnSave);
-			Controls.Add(label1);
 			Controls.Add(FormatTextBox);
 			Controls.Add(BackgroundColorButton);
 			Controls.Add(FontButton);
@@ -123,6 +127,7 @@
 			Name = "ConfigForm";
 			Text = "Config";
 			TopMost = true;
+			Load += ConfigForm_Load;
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -134,9 +139,10 @@
         private Button FontButton;
         private Button BackgroundColorButton;
         private TextBox FormatTextBox;
-        private Label label1;
         private Button btnSave;
         private Button btnCancel;
 		private Label SampleLabel;
+		private LinkLabel DateTimeFormatHelpLinkLabel;
+		private ToolTip toolTip1;
 	}
 }

@@ -1,4 +1,7 @@
-﻿namespace BRClock2
+﻿using System.Diagnostics;
+using System.Windows.Forms;
+
+namespace BRClock2
 {
 
 	// This is JUST the Clock Configuration dialog box, not the settings themselves, 
@@ -22,7 +25,7 @@
 			if (FontDialog.ShowDialog() == DialogResult.OK)
 			{
 				ClockInstance.ClockFont = FontDialog.Font;
-				ClockInstance.ClockTextColor = FontDialog.Color; 
+				ClockInstance.ClockTextColor = FontDialog.Color;
 				UpdateSampleText();
 			}
 		}
@@ -55,6 +58,29 @@
 			SampleLabel.ForeColor = ClockInstance.ClockTextColor; // Use the instance's text color
 			SampleLabel.Font = ClockInstance.ClockFont; // Use the instance's font
 			SampleLabel.Text = $"{ClockInstance.ClockFont.Name} {ClockInstance.ClockFont.SizeInPoints} pts";
+		}
+
+		private void DateTimeFormatHelpLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			try
+			{
+
+				var psi = new ProcessStartInfo
+				{
+					FileName = @"https://learn.microsoft.com/en-us/dotnet/api/system.datetime.tostring?view=net-9.0&devlangs=csharp&f1url=%3FappId%3DDev17IDEF1%26l%3DEN-US%26k%3Dk(System.DateTime.ToString)%3Bk(DevLang-csharp)%26rd%3Dtrue",
+					UseShellExecute = true
+				};
+				Process.Start(psi);
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"Error opening URL: {ex.Message}");
+			}
+		}
+
+		private void ConfigForm_Load(object sender, EventArgs e)
+		{
+			toolTip1.SetToolTip(DateTimeFormatHelpLinkLabel, "Click here for help on formatting.");
 		}
 	}
 }

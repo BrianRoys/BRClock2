@@ -1,3 +1,4 @@
+using System.Windows.Forms;
 using Timer = System.Windows.Forms.Timer;
 
 namespace BRClock2
@@ -24,6 +25,7 @@ namespace BRClock2
 			TimeLabel.Text = DateTime.Now.ToString(ClockDateTimeFormat);
 		}
 
+		// Right-click on the label to open the configuration dialog
 		private void TimeLabel_MouseClick(object sender, MouseEventArgs e)
 		{
 			if (e.Button == MouseButtons.Right)
